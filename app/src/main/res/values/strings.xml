@@ -12,5 +12,5 @@
     <string name="pref_units_summary">Enter units of temperature</string>
     <string name="pref_units_key">unit</string>
     <string name="pref_units_dialog_title">Units</string>
-    <string name="pref_units_default_value">Celcius</string>
+    <string name="pref_units_default_value">Metric</string>
 </resources>
