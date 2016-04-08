@@ -100,7 +100,8 @@ public class ForecastFragment extends Fragment {
     private  void prefSharedCode(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         location = sharedPreferences.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default_value));
-        new WeatherDataFetchTask().execute(location);
+        String units = sharedPreferences.getString(getString(R.string.pref_units_key),getString(R.string.pref_units_default_value));
+        new WeatherDataFetchTask().execute(location,units);
     }// end of prefSharedCode()
 
     class WeatherDataFetchTask extends AsyncTask<String, Void, String> {
@@ -123,7 +124,7 @@ public class ForecastFragment extends Fragment {
                 finalURL.appendPath("daily");
                 finalURL.appendQueryParameter("q", params[0]);
                 finalURL.appendQueryParameter("cnt", "13");
-                finalURL.appendQueryParameter("units", "metric");
+                finalURL.appendQueryParameter("units", params[1]);
                 finalURL.appendQueryParameter("APPID", "76ffb28f9ba7a7314b3714cb7cb46d43");
 
                 URL url = new URL(finalURL.build().toString());

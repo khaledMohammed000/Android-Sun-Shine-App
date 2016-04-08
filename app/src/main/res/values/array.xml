@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- this is a mapping value for that which appears on screen-->
     <array name="Units">
-        <item>Metric</item>
-        <item>Imperial</item>
+        <item>metric</item>
+        <item>imperial</item>
     </array>
+    <!-- this is shown on screen-->
     <array name="Units_entries">
         <!-- Metric means it is celsius -->
         <item>Metric</item>
