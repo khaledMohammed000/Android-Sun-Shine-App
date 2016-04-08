@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="Units">
+        <item>Celcius</item>
+        <item>Farenhight</item>
+    </array>
+    <array name="Units_entries">
+        <item>Celcius</item>
+        <item>Farenhight</item>
+    </array>
+</resources>

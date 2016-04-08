@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Sun-Shine</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="pref_location_title">Location</string>
+    <string name="pref_location_key">location</string>
+    <string name="pref_location_default_value">500009</string>
+    <string name="pref_location_summary">Enter the pin code of the location</string>
+    <string name="pref_units_title">Units</string>
+    <string name="pref_units_summary">Enter units of temperature</string>
+    <string name="pref_units_key">unit</string>
+    <string name="pref_units_dialog_title">Units</string>
+    <string name="pref_units_default_value">Celcius</string>
+</resources>
