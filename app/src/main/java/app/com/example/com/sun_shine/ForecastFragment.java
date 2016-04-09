@@ -38,6 +38,7 @@ public class ForecastFragment extends Fragment {
     ListView ls;
     String forecastJsonStr = null;
     String location;
+    String[] latLong;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -57,15 +58,15 @@ public class ForecastFragment extends Fragment {
 
         ls = (ListView) rootView.findViewById(R.id.listView_fragment_main);
         ls.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        TextView tv = (TextView) view;
-                        //Toast.makeText(getContext(),tv.getText().toString() +" pos : "+position,Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getContext(), DetailActivity.class);
-                        intent.putExtra(intent.EXTRA_TEXT, tv.getText().toString());
-                        startActivity(intent);
-                    }
-                });
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView tv = (TextView) view;
+                //Toast.makeText(getContext(),tv.getText().toString() +" pos : "+position,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra(intent.EXTRA_TEXT, tv.getText().toString());
+                startActivity(intent);
+            }
+        });
         ls.setAdapter(adapter);
 
         return rootView;
@@ -93,6 +94,16 @@ public class ForecastFragment extends Fragment {
         if (id == R.id.action_refresh) {
             prefSharedCode();
             return true;}
+        if(id == R.id.action_maps){
+
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:"+latLong[0]+","+latLong[1]));
+            Log.v("Mapppppppppppppppp","geo:"+latLong[0]+","+latLong[1]);
+            startActivity(intent);
+            if(intent.resolveActivity(getActivity().getPackageManager())!=null){
+                startActivity(intent);
+            }
+            return  true;
+        }
 
         return super.onOptionsItemSelected(item);
     }//end of onOptionsItemSelected
@@ -174,12 +185,12 @@ public class ForecastFragment extends Fragment {
             return forecastJsonStr;
         }//end of doInBackground()
 
-
         @Override
         protected void onPostExecute(String s) {
             Helper helper = new Helper();
             try {
                 String[] ActualData = helper.getWeatherDataFromJson(s, 13);
+                latLong = helper.getLatLong(s);
                 adapter.clear();
                 for (String we : ActualData) {
                     adapter.add(we);

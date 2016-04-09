@@ -36,6 +36,20 @@ public class Helper {
         return highLowStr;
     }
 
+
+    public String[] getLatLong(String forecastJsonStr) throws JSONException {
+        String []latLong = new String[2];
+
+        JSONObject onj = new JSONObject(forecastJsonStr);
+        onj = onj.getJSONObject("city");
+        onj = onj.getJSONObject("coord");
+        latLong[1] = onj.getString("lon").toString();
+        latLong[0] = onj.getString("lat").toString();
+
+        return latLong;
+    }
+
+
     /**
      * Take the String representing the complete forecast in JSON Format and
      * pull out the data we need to construct the Strings needed for the wireframes.
@@ -111,5 +125,6 @@ public class Helper {
         }
         return resultStrs;
 
-    }
+    }//end of method
+
 }
